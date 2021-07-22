@@ -3,25 +3,28 @@ import React, { Component } from 'react';
 
 export default class Bomb extends Component {
     
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
-            secondsLeft: `${this.props.initialCount}`
+            secondsLeft: props.initialCount
         }
     }
     
-    // initialCount = () => {
-    //     if (this.state.secondsLeft === 0) {
-    //         <h3>Boom!</h3>
-    //     } else {
-    //         <h3>{this.props.initialCount} seconds left before I go boom!</h3>
-    //     }
-    // }
+    initialCount = () => {
+        if (this.state.secondsLeft === 0) {
+            return "Boom!"
+        } else {
+            return `${this.state.secondsLeft} seconds left before I go boom!`
+        }
+    }
 
     render() {
-        console.log(this.props.initialCount)
+        // const seconds = this.state.secondsLeft === 0 ? "Boom" : `${this.state.secondsLeft} seconds left before I go boom!`
+
         return(
             <div>
+                <h3>{this.initialCount()}</h3>
+                <p>{this.props.type}</p>
 
             </div>
         )
